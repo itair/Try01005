@@ -59,27 +59,24 @@ void main()
         << " is " << gmean(x,y) << endl;
       cout << "Enter next set of numbers <q to quit>: ";
     }// end of try block
+                    
+    catch (Execp_logic & e) 
+    {
+      //cerr << e.what() << endl;
+       e.Report();
+      cout << "Sorry, you don't get to play any more.\n";
+      break;
+    }
     catch (invalid_argument  & e)    // start of catch block
     {
       cerr << e.what() << endl;
       cout << "Try again.\n";
-      continue;
-    }                  
-    catch (std::out_of_range & e) 
-    {
-      cout << e.what() << endl;
-    // cout << "Values used: " << hg.v1 << ", " << hg.v2 << endl;
-      cout << "Sorry, you don't get to play any more.\n";
-      break;
+      continue; 
     } // end of catch block
   }
   cout << "Bye!\n";
   //异常类的改写 不同异常的层次与catch 层次
-
-
-
-
-
+  //派生类调用顺序
 
 
   longline();
