@@ -82,6 +82,7 @@
     <ClCompile Include="tvfm.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="exc_mean.h" />
     <ClInclude Include="GobalFuc.h" />
     <ClInclude Include="Inline.h" />
     <ClInclude Include="Try.h" />

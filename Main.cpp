@@ -9,6 +9,10 @@
 #include <iostream>
 #include <string>
 #include "tvfm.h"   // only change to use_tv.cpp
+#include <cmath> // or math.h, unix users may need -lm flag
+#include "exc_mean.h"
+
+
 
 using namespace std;
 
@@ -39,6 +43,38 @@ void main()
   grey.set_chan(s32,28);
   cout << "\n32\" settings:\n";
   s32.settings();
+  // 相互友元的设定
+
+  longline(2);  //2
+  double x, y, z;
+
+  cout << "Enter two numbers: ";
+  while (cin >> x >> y)
+  {
+    try {                  // start of try block
+      z = hmean(x,y);
+      cout << "Harmonic mean of " << x << " and " << y
+        << " is " << z << endl;
+      cout << "Geometric mean of " << x << " and " << y
+        << " is " << gmean(x,y) << endl;
+      cout << "Enter next set of numbers <q to quit>: ";
+    }// end of try block
+    catch (invalid_argument  & e)    // start of catch block
+    {
+      cerr << e.what() << endl;
+      cout << "Try again.\n";
+      continue;
+    }                  
+    catch (std::out_of_range & e) 
+    {
+      cout << e.what() << endl;
+    // cout << "Values used: " << hg.v1 << ", " << hg.v2 << endl;
+      cout << "Sorry, you don't get to play any more.\n";
+      break;
+    } // end of catch block
+  }
+  cout << "Bye!\n";
+  //异常类的改写 不同异常的层次与catch 层次
 
 
 
